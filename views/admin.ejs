@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Mirai Japan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; padding: 20px; background: #f4f4f4; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        h1 { color: #1D3557; margin-bottom: 20px; text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #E63946; color: white; }
+        tr:hover { background-color: #f1f1f1; }
+        .btn-back { display: inline-block; padding: 10px 20px; background: #333; color: white; text-decoration: none; border-radius: 5px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+   <div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <a href="/" class="btn-back">← Kembali ke Home</a>
+        <a href="/logout" style="background: red; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Logout 🔒</a>
+    </div>
+    
+    <h1>Data Pendaftar Masuk 🚀</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Lengkap</th>
+                    <th>WhatsApp</th>
+                    <th>Pesan</th>
+                    <th>Waktu Daftar</th>
+                    <th>Aksi</th> </tr>
+            </thead>
+            <tbody>
+                <% if (calonSiswa.length > 0) { %>
+                    <% calonSiswa.forEach((siswa, index) => { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><strong><%= siswa.nama %></strong></td>
+                            <td><%= siswa.no_hp %></td>
+                            <td><%= siswa.pesan %></td>
+                            <td><%= siswa.tanggal_daftar %></td>
+                            <td>
+                                <form action="/admin/delete/<%= siswa.id %>" method="POST" style="display:inline;" onsubmit="return confirm('Yakin mau hapus data <%= siswa.nama %>? Gak bisa dibalikin lho!');">
+                                    <button type="submit" style="background: red; padding: 5px 10px; font-size: 0.8rem; margin-top: 0;">Hapus</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="6" style="text-align:center;">Belum ada yang daftar nih, Bro.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+<a href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20tertarik%20program%20Magang%20Jepang" class="float-wa" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA">
+</a>
+</body>
+</html>

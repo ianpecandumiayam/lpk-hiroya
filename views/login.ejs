@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Admin - HIROYA Japan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { background: #1D3557; display: flex; justify-content: center; align-items: center; height: 100vh; font-family: 'Poppins', sans-serif; margin: 0; }
+        .login-box { background: white; padding: 40px; border-radius: 10px; width: 100%; max-width: 350px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        h2 { color: #E63946; margin-bottom: 20px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #E63946; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px; }
+        button:hover { background: #c72c38; }
+        .error { color: red; font-size: 0.9rem; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h2>Admin Area 🔒</h2>
+        
+        <% if (locals.error) { %>
+            <p class="error"><%= error %></p>
+        <% } %>
+
+        <form action="/login" method="POST">
+            <input type="text" name="username" placeholder="Username" required autocomplete="off">
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Masuk Bos</button>
+        </form>
+        <p style="margin-top: 20px; font-size: 0.8rem;"><a href="/" style="color: #666;">← Balik ke Home</a></p>
+    </div>
+</body>
+</html>
